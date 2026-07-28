@@ -1,171 +1,192 @@
-# AI Website Cloner Template
+# Transzug - Professional Moving Company Website
 
-<a href="https://github.com/JCodesMore/ai-website-cloner-template/blob/master/LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue" alt="MIT License" /></a> <a href="https://github.com/JCodesMore/ai-website-cloner-template/stargazers"><img src="https://img.shields.io/github/stars/JCodesMore/ai-website-cloner-template?style=flat" alt="Stars" /></a> <a href="https://discord.gg/hrTSX5yTpB"><img src="https://img.shields.io/discord/1400896964597383279?label=discord" alt="Discord" /></a>
+A high-end, fully bilingual (German/Arabic) website for Transzug, a professional moving company operating across Germany. Built with modern web technologies and featuring comprehensive internationalization with RTL support.
 
-A reusable template for reverse-engineering any website into a clean, modern Next.js codebase using AI coding agents. 
+## 🌟 Features
 
-**Recommended: [Claude Code](https://docs.anthropic.com/en/docs/claude-code) with Opus 4.8 for best results** — but works with a variety of AI coding agents.
+### 🌍 Internationalization (i18n)
+- **Bilingual Support**: Complete German (DE) and Arabic (AR) translations
+- **RTL/LTR Layout**: Automatic layout direction switching
+- **Smart Language Switcher**: Seamless language switching while maintaining current page context
+- **SEO Optimized**: Language-specific metadata and structured URLs
 
-Point it at a URL, run `/clone-website`, and your AI agent will inspect the site, extract design tokens and assets, write component specs, and dispatch parallel builders to reconstruct every section.
+### 🎨 Design & UI
+- **Pixel-Perfect Design**: Professional, modern interface
+- **Fully Responsive**: Optimized for all device sizes
+- **Animated Components**: Smooth transitions and animated statistics
+- **Image Optimization**: Next.js Image component with automatic optimization
+- **Interactive Elements**: Before/After slider, carousels, accordions
 
-## Demo
+### 📦 Core Sections
+- Hero Section with rotating image carousel
+- About Section with company information
+- Services Section (7 different services)
+- Logistics & Fleet Management
+- Team Presentation
+- Process Steps
+- Customer Testimonials
+- FAQ Section
+- Contact CTA
 
-[![Watch the demo](docs/design-references/comparison.png)](https://youtu.be/O669pVZ_qr0)
+## 🚀 Tech Stack
 
-> Click the image above to watch the full demo on YouTube.
+- **Framework**: [Next.js 16.2.1](https://nextjs.org/) (App Router)
+- **Language**: TypeScript
+- **Styling**: [Tailwind CSS 4](https://tailwindcss.com/)
+- **Internationalization**: [next-intl](https://next-intl-docs.vercel.app/)
+- **UI Components**: [shadcn/ui](https://ui.shadcn.com/)
+- **Icons**: Lucide React
+- **Font**: Google Fonts (Geist, Cairo for Arabic)
 
-## Quick Start
+## 📋 Prerequisites
 
-> **Important:** Start by making your own copy with GitHub's **Use this template** button. Do not clone this template repository directly for your website project, and do not open pull requests here with your generated website.
+- Node.js 24.x or higher
+- npm or yarn package manager
 
-1. **Create your own repository from this template**
+## 🛠️ Installation
 
-   On the GitHub page for this project, click **Use this template**, then click **Create a new repository**.
-
-   Give your new repository a name, choose whether it should be public or private, then click **Create repository**. If GitHub shows an **Include all branches** option, you can leave it off.
-
-   This gives you your own separate project to work in, so your website changes stay in your account instead of coming back to the main template.
-
-2. **Open your new repository on your computer**
-
-   After GitHub creates your copy, open that new repository. Click **Code** and open or clone your new repository with your preferred coding tool.
-
-   If you use the terminal, the command will look like this:
-
-   ```bash
-   git clone https://github.com/YOUR-USERNAME/YOUR-NEW-REPOSITORY.git
-   cd YOUR-NEW-REPOSITORY
-   ```
-
-3. **Install dependencies**
-   ```bash
-   npm install
-   ```
-4. **Start your AI agent** — Claude Code recommended:
-   ```bash
-   claude --chrome
-   ```
-5. **Run the skill**:
-   ```
-   /clone-website <target-url1> [<target-url2> ...]
-   ```
-6. **Customize** (optional) — after the base clone is built, modify as needed
-
-> Using a different agent? Open `AGENTS.md` for project instructions — most agents pick it up automatically.
-
-## Supported Platforms
-
-| Agent                                                         | Status                     |
-| ------------------------------------------------------------- | -------------------------- |
-| [Claude Code](https://docs.anthropic.com/en/docs/claude-code) | **Recommended** — Opus 4.8 |
-| [Codex CLI](https://github.com/openai/codex)                  | Supported                  |
-| [OpenCode](https://opencode.ai/)                              | Supported                  |
-| [GitHub Copilot](https://github.com/features/copilot)         | Supported                  |
-| [Cursor](https://cursor.com/)                                 | Supported                  |
-| [Windsurf](https://codeium.com/windsurf)                      | Supported                  |
-| [Gemini CLI](https://github.com/google-gemini/gemini-cli)     | Supported                  |
-| [Cline](https://github.com/cline/cline)                       | Supported                  |
-| [Roo Code](https://github.com/RooCodeInc/Roo-Code)            | Supported                  |
-| [Continue](https://continue.dev/)                             | Supported                  |
-| [Amazon Q](https://aws.amazon.com/q/developer/)               | Supported                  |
-| [Augment Code](https://www.augmentcode.com/)                  | Supported                  |
-| [Aider](https://aider.chat/)                                  | Supported                  |
-
-## Prerequisites
-
-- [Node.js](https://nodejs.org/) 24+
-- An AI coding agent (see [Supported Platforms](#supported-platforms))
-
-## Tech Stack
-
-- **Next.js 16** — App Router, React 19, TypeScript strict
-- **shadcn/ui** — Radix primitives + Tailwind CSS v4
-- **Tailwind CSS v4** — oklch design tokens
-- **Lucide React** — default icons (replaced by extracted SVGs during cloning)
-
-## How It Works
-
-The `/clone-website` skill runs a multi-phase pipeline:
-
-1. **Reconnaissance** — screenshots, design token extraction, interaction sweep (scroll, click, hover, responsive)
-2. **Foundation** — updates fonts, colors, globals, downloads all assets
-3. **Component Specs** — writes detailed spec files (`docs/research/components/`) with exact computed CSS values, states, behaviors, and content
-4. **Parallel Build** — dispatches builder agents in git worktrees, one per section/component
-5. **Assembly & QA** — merges worktrees, wires up the page, runs visual diff against the original
-
-Each builder agent receives the full component specification inline — exact `getComputedStyle()` values, interaction models, multi-state content, responsive breakpoints, and asset paths. No guessing.
-
-## Use Cases
-
-- **Platform migration** — rebuild a site you own from WordPress/Webflow/Squarespace into a modern Next.js codebase
-- **Lost source code** — your site is live but the repo is gone, the developer left, or the stack is legacy. Get the code back in a modern format
-- **Learning** — deconstruct how production sites achieve specific layouts, animations, and responsive behavior by working with real code
-
-## Not Intended For
-
-- **Phishing or impersonation** — this project must not be used for deceptive purposes, impersonation, or any activity that breaks the law.
-- **Passing off someone's design as your own** — logos, brand assets, and original copy belong to their owners.
-- **Violating terms of service** — some sites explicitly prohibit scraping or reproduction. Check first.
-
-## Project Structure
-
-```
-src/
-  app/              # Next.js routes
-  components/       # React components
-    ui/             # shadcn/ui primitives
-    icons.tsx       # Extracted SVG icons
-  lib/utils.ts      # cn() utility
-  types/            # TypeScript interfaces
-  hooks/            # Custom React hooks
-public/
-  images/           # Downloaded images from target
-  videos/           # Downloaded videos from target
-  seo/              # Favicons, OG images
-docs/
-  research/         # Extraction output & component specs
-  design-references/ # Screenshots
-scripts/
-  sync-agent-rules.sh  # Regenerate agent instruction files
-  sync-skills.mjs      # Regenerate /clone-website for all platforms
-AGENTS.md           # Agent instructions (single source of truth)
-CLAUDE.md           # Claude Code config (imports AGENTS.md)
-GEMINI.md           # Gemini CLI config (imports AGENTS.md)
-```
-
-## Commands
-
+1. **Clone the repository**
 ```bash
-npm run dev    # Start dev server
-npm run build  # Production build
-npm run lint   # ESLint check
-npm run typecheck # TypeScript check
-npm run check  # Run lint + typecheck + build
+git clone https://github.com/OmarRaafatSayed/Transzug.git
+cd Transzug
 ```
 
-### If using docker
-
+2. **Install dependencies**
 ```bash
-docker compose up app --build # build and run the app
-docker compose up dev --build # run the app in dev mode on port 3001
+npm install
 ```
 
-## Updating for Other Platforms
+3. **Run development server**
+```bash
+npm run dev
+```
 
-Two source-of-truth files power all platform support. Edit the source, then run the sync script:
+4. **Open in browser**
+```
+http://localhost:3000
+```
 
-| What                   | Source of truth                         | Sync command                       |
-| ---------------------- | --------------------------------------- | ---------------------------------- |
-| Project instructions   | `AGENTS.md`                             | `bash scripts/sync-agent-rules.sh` |
-| `/clone-website` skill | `.claude/skills/clone-website/SKILL.md` | `node scripts/sync-skills.mjs`     |
+The application will automatically redirect to `/de` (German) by default.
 
-Each script regenerates the platform-specific copies automatically. Agents that read the source files natively need no regeneration.
+## 🌐 Available Routes
 
+- `/de` - German version
+- `/ar` - Arabic version (RTL layout)
+- `/` - Automatically redirects to `/de`
 
-## Star History
+## 📁 Project Structure
 
-[![Star History Chart](https://api.star-history.com/svg?repos=JCodesMore/ai-website-cloner-template&type=Date)](https://star-history.com/#JCodesMore/ai-website-cloner-template&Date)
+```
+├── src/
+│   ├── app/
+│   │   ├── [locale]/          # Locale-specific pages
+│   │   │   ├── layout.tsx     # RTL/LTR layout handler
+│   │   │   └── page.tsx       # Main page
+│   │   ├── layout.tsx         # Root layout
+│   │   ├── page.tsx           # Root redirect
+│   │   └── globals.css        # Global styles
+│   ├── components/            # React components
+│   │   ├── header.tsx
+│   │   ├── hero-section.tsx
+│   │   ├── language-switcher.tsx
+│   │   └── ...
+│   └── middleware.ts          # i18n routing middleware
+├── messages/                  # Translation files
+│   ├── de.json               # German translations
+│   └── ar.json               # Arabic translations
+├── public/
+│   └── images/               # Static images
+├── i18n.ts                   # i18n configuration
+└── next.config.ts            # Next.js configuration
+```
 
-## License
+## 🔧 Scripts
 
-MIT
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run start` - Start production server
+- `npm run lint` - Run ESLint
+- `npm run typecheck` - Run TypeScript type checking
+
+## 🎯 Key Components
+
+### Language Switcher
+Allows seamless switching between German and Arabic while maintaining the current page context.
+
+### Hero Section
+- Rotating image carousel with 4 hero images
+- Animated statistics counters
+- Dual CTA buttons
+- Fully translated content
+
+### Services Section
+7 comprehensive service offerings:
+- Private Moving
+- Corporate & Office Moving
+- Senior Moving
+- Furniture Storage
+- Property Clearance
+- Long-Distance Moving
+- Logistics & Fleet Services
+
+### Testimonials
+Customer reviews with carousel navigation and smooth transitions.
+
+### FAQ Section
+Expandable accordion with frequently asked questions.
+
+## 🌍 Adding New Languages
+
+1. Create a new translation file in `/messages/{locale}.json`
+2. Add the locale to `i18n.ts`:
+```typescript
+export const locales = ['de', 'ar', 'en'] as const;
+```
+3. Update middleware configuration
+4. Add font support if needed in layout
+
+## 📱 Responsive Design
+
+The website is fully responsive and optimized for:
+- Desktop (1440px+)
+- Laptop (1024px - 1439px)
+- Tablet (768px - 1023px)
+- Mobile (320px - 767px)
+
+## 🎨 Color Scheme
+
+- Primary: Orange (#E67E22) - Trust and energy
+- Secondary: Dark Gray (#1F2937) - Professionalism
+- Background: White/Light Gray
+- Text: Dark Gray/Black
+
+## ⚡ Performance
+
+- Server-side rendering (SSR) for optimal SEO
+- Image optimization with Next.js Image
+- Code splitting and lazy loading
+- Minimal bundle size with tree shaking
+
+## 🔒 Security
+
+- Environment variables protected via `.gitignore`
+- No sensitive data in client-side code
+- Secure headers configuration
+- Input validation and sanitization
+
+## 📄 License
+
+This project is proprietary and confidential.
+
+## 👥 Author
+
+**Omar Raafat Sayed**
+- GitHub: [@OmarRaafatSayed](https://github.com/OmarRaafatSayed)
+
+## 🤝 Contributing
+
+This is a private project. For any inquiries, please contact the author.
+
+---
+
+Built with ❤️ using Next.js and modern web technologies.

@@ -1,0 +1,252 @@
+{
+  "header": {
+    "logo": "Transzug",
+    "nav": {
+      "home": "Startseite",
+      "services": "Leistungen",
+      "about": "Über uns",
+      "process": "Ablauf",
+      "reviews": "Bewertungen",
+      "contact": "Kontakt"
+    },
+    "cta": "Kostenlos anfragen"
+  },
+  "hero": {
+    "rating": "4,9 · 500+ zufriedene Kunden",
+    "title": "Ihr Umzug. Unsere Verantwortung.",
+    "subtitle": "Stressfrei umziehen — pünktlich, sicher, transparent.",
+    "description": "Festpreis ohne versteckte Kosten, vollständig versichert und mit einem geschulten Team, dem Sie Ihr Zuhause anvertrauen können.",
+    "ctaPrimary": "Kostenloses Angebot erhalten",
+    "ctaSecondary": "Unsere Leistungen",
+    "stats": {
+      "rating": "Google Bewertungen",
+      "years": "Jahre Erfahrung",
+      "moves": "Umzüge deutschlandweit",
+      "insurance": "Versichert"
+    }
+  },
+  "about": {
+    "badge": "Wer wir sind",
+    "title": "Ihr Partner für sichere Umzüge",
+    "description": "Seit über einem Jahrzehnt planen und begleiten wir Umzüge in ganz Deutschland — vom Studentenapartment bis zum Firmenstandort. Unser festes, geschultes Team behandelt Ihr Hab und Gut so, als wäre es das eigene: sorgfältig, transparent und ohne böse Überraschungen.",
+    "features": {
+      "team": "Fest angestelltes, geschultes Team",
+      "coverage": "Deutschlandweite Abdeckung",
+      "pricing": "Transparenter Festpreis nach Besichtigung"
+    },
+    "cta": "Mehr über uns"
+  },
+  "why": {
+    "title": "Warum Transzug",
+    "subtitle": "Vier Versprechen, die wir jedem Kunden geben — und einhalten.",
+    "features": {
+      "insurance": {
+        "title": "Volle Versicherung",
+        "description": "Ihre Möbel und Wertgegenstände sind während des gesamten Umzugs versichert."
+      },
+      "pricing": {
+        "title": "Festpreis-Garantie",
+        "description": "Kein Kleingedrucktes, keine Nachforderungen. Der Preis nach Besichtigung ist der Endpreis."
+      },
+      "team": {
+        "title": "Geschultes Team",
+        "description": "Zertifizierte Umzugsprofis mit jahrelanger Erfahrung — keine Aushilfen."
+      },
+      "punctuality": {
+        "title": "Pünktlich am Umzugstag",
+        "description": "Wir erscheinen zur vereinbarten Uhrzeit. Verbindlich, jedes Mal."
+      }
+    }
+  },
+  "services": {
+    "title": "Unsere Leistungen",
+    "subtitle": "Von der Wohnung bis zur Firmenzentrale — alles aus einer Hand.",
+    "items": {
+      "private": {
+        "title": "Privatumzug",
+        "description": "Kompletter Wohnungsumzug inklusive Verpackung, Transport und Aufbau."
+      },
+      "office": {
+        "title": "Firmen- & Büroumzug",
+        "description": "Reibungsloser Standortwechsel mit minimaler Betriebsunterbrechung."
+      },
+      "senior": {
+        "title": "Seniorenumzug",
+        "description": "Einfühlsame Betreuung und Rundum-Service für einen entspannten Neustart."
+      },
+      "storage": {
+        "title": "Möbellagerung",
+        "description": "Sichere, klimatisierte Lagerung — flexibel für Tage, Wochen oder Monate."
+      },
+      "clearance": {
+        "title": "Entrümpelung",
+        "description": "Fachgerechte Wohnungsauflösung inklusive Entsorgung — besenrein übergeben."
+      },
+      "longDistance": {
+        "title": "Fernumzug deutschlandweit",
+        "description": "Zuverlässige Langstreckenumzüge in ganz Deutschland — Tür zu Tür."
+      },
+      "logistics": {
+        "title": "LKW-Transporte & Logistik",
+        "description": "Eigene LKW-Flotte und feste Rahmenverträge für Logistik- und Industrieunternehmen."
+      }
+    },
+    "cta": "Mehr erfahren"
+  },
+  "logistics": {
+    "badge": "LKW & Logistik",
+    "title": "Große LKW-Transporte & Logistik-Partnerschaften",
+    "subtitle": "Eigene LKW-Flotte für Großtransporte — und verlässliche Rahmenverträge für Logistikunternehmen.",
+    "description": "Neben Umzügen betreiben wir eine eigene Flotte großer LKW für Paletten-, Stückgut- und Volumentransporte in ganz Deutschland und Europa. Logistikunternehmen, Speditionen und Industriekunden arbeiten mit uns über feste Rahmenverträge zusammen — mit planbaren Kapazitäten, geschulten Fahrern und voller Ladungsversicherung.",
+    "features": {
+      "drivers": "Berufskraftfahrer mit Modul 95 & Gefahrgut-Basis",
+      "tracking": "GPS-Tracking und feste Ansprechperson",
+      "safety": "Ladungssicherung nach VDI 2700",
+      "insurance": "Vollständige Transportversicherung"
+    },
+    "stats": {
+      "weight": "40 t",
+      "weightLabel": "max. Zuggewicht",
+      "availability": "24/7",
+      "availabilityLabel": "Disposition",
+      "area": "EU",
+      "areaLabel": "Einsatzgebiet"
+    },
+    "cards": {
+      "fleet": {
+        "title": "Eigene LKW-Flotte",
+        "description": "7,5 t bis 40 t Sattelzüge — Planen, Koffer und Hebebühne je nach Ladung."
+      },
+      "contracts": {
+        "title": "Rahmenverträge",
+        "description": "Feste Kontingente und Monatspreise für Speditionen und Logistikpartner."
+      },
+      "pallets": {
+        "title": "Palettentransport",
+        "description": "Stückgut, Paletten und Projektladung — deutschland- und europaweit."
+      },
+      "capacity": {
+        "title": "Kapazität auf Abruf",
+        "description": "Zusätzliche Fahrzeuge und Fahrer in Spitzenzeiten, kurzfristig verfügbar."
+      }
+    },
+    "cta": {
+      "primary": "Logistik-Anfrage senden",
+      "secondary": "Rahmenvertrag besprechen"
+    }
+  },
+  "team": {
+    "title": "Das Team hinter Ihrem Umzug",
+    "subtitle": "Die Menschen, denen Sie vertrauen können — vom ersten Anruf bis zur Schlüsselübergabe.",
+    "members": {
+      "ceo": {
+        "name": "Markus Weber",
+        "role": "Geschäftsführer"
+      },
+      "support": {
+        "name": "Fatima Al-Hassan",
+        "role": "Kundenbetreuung"
+      },
+      "lead": {
+        "name": "Andreas Klein",
+        "role": "Teamleiter Umzug"
+      },
+      "planning": {
+        "name": "Sara Novak",
+        "role": "Disposition & Planung"
+      }
+    }
+  },
+  "process": {
+    "title": "So arbeiten wir",
+    "subtitle": "Vier klare Schritte — Sie wissen jederzeit, was als Nächstes passiert.",
+    "steps": {
+      "contact": {
+        "title": "Kontaktaufnahme",
+        "description": "Sie melden sich telefonisch oder über unser Formular — wir antworten binnen 24 Stunden."
+      },
+      "inspection": {
+        "title": "Kostenlose Besichtigung",
+        "description": "Wir kommen vorbei, prüfen den Umfang und erstellen Ihr verbindliches Festpreis-Angebot."
+      },
+      "moving": {
+        "title": "Umzugstag",
+        "description": "Unser Team packt, transportiert und baut auf — sicher, pünktlich und effizient."
+      },
+      "followup": {
+        "title": "Übergabe & Nachbetreuung",
+        "description": "Wir bleiben Ansprechpartner — auch nach dem letzten Karton."
+      }
+    }
+  },
+  "beforeAfter": {
+    "title": "Vorher — Nachher",
+    "subtitle": "Sehen Sie den Unterschied. Ziehen Sie den Regler.",
+    "before": "Vorher",
+    "after": "Nachher"
+  },
+  "stats": {
+    "moves": "Abgeschlossene Umzüge",
+    "experience": "Jahre Erfahrung",
+    "satisfaction": "Kundenzufriedenheit",
+    "cities": "Städte in Deutschland"
+  },
+  "testimonials": {
+    "title": "Was unsere Kunden sagen",
+    "items": {
+      "family": {
+        "text": "Wir hatten Angst vor dem Umzug mit Kindern — Transzug hat uns alles abgenommen.",
+        "author": "Familie Bauer, Hamburg"
+      },
+      "business": {
+        "text": "Professionell, pünktlich und ohne Ausfallzeit. Perfekt für unseren Firmenumzug.",
+        "author": "Thomas Müller, Berlin"
+      },
+      "senior": {
+        "text": "Einfühlsam und geduldig. Der Umzug meiner Mutter war in besten Händen.",
+        "author": "Anna Schmidt, München"
+      }
+    }
+  },
+  "faq": {
+    "title": "Häufig gestellte Fragen",
+    "items": {
+      "insurance": {
+        "question": "Ist die Versicherung im Preis enthalten?",
+        "answer": "Ja. Jeder Umzug ist während Transport und Handhabung vollständig versichert — ohne Aufpreis."
+      },
+      "pricing": {
+        "question": "Wie werden die Umzugskosten berechnet?",
+        "answer": "Nach einer kostenlosen Besichtigung erstellen wir ein verbindliches Festpreis-Angebot basierend auf Volumen, Entfernung und Aufwand."
+      },
+      "coverage": {
+        "question": "Sind Sie deutschlandweit tätig?",
+        "answer": "Ja, wir führen Umzüge in ganz Deutschland durch — von Hamburg bis München, von Köln bis Dresden."
+      },
+      "booking": {
+        "question": "Wie kurzfristig kann ich buchen?",
+        "answer": "Je nach Verfügbarkeit können wir auch kurzfristige Termine realisieren. Kontaktieren Sie uns für Details."
+      }
+    }
+  },
+  "cta": {
+    "title": "Bereit für einen stressfreien Umzug?",
+    "subtitle": "Fordern Sie jetzt Ihr kostenloses Angebot an — unverbindlich und in 24 Stunden.",
+    "button": "Jetzt Angebot anfordern"
+  },
+  "footer": {
+    "description": "Transzug ist Ihr deutschlandweiter Partner für sichere, pünktliche und transparent kalkulierte Umzüge.",
+    "quickLinks": "Schnellzugriff",
+    "services": "Leistungen",
+    "contact": "Kontakt",
+    "phone": "+49 30 123 456 78",
+    "email": "info@transzug.de",
+    "address": "Musterstraße 12, 10115 Berlin",
+    "copyright": "© 2026 Transzug. Alle Rechte vorbehalten.",
+    "legal": {
+      "imprint": "Impressum",
+      "privacy": "Datenschutz",
+      "terms": "AGB"
+    }
+  }
+}
