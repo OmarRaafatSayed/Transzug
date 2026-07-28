@@ -46,23 +46,23 @@ export function StatsSection() {
   }, []);
 
   return (
-    <section className="container mx-auto px-4 sm:px-8 py-12 sm:py-16">
+    <section className="container mx-auto px-4 sm:px-8 py-12 sm:py-16 bg-[#0a0f1a]">
       <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-12">
         <div className="text-center">
           <div className="text-4xl sm:text-6xl font-bold text-orange-600 mb-2">{animatedStats.moves}+</div>
-          <div className="text-gray-600 text-xs sm:text-sm uppercase tracking-wide">{t('moves')}</div>
+          <div className="text-gray-400 text-xs sm:text-sm uppercase tracking-wide">{t('moves')}</div>
         </div>
         <div className="text-center">
           <div className="text-4xl sm:text-6xl font-bold text-orange-600 mb-2">{animatedStats.experience}+</div>
-          <div className="text-gray-600 text-xs sm:text-sm uppercase tracking-wide">{t('experience')}</div>
+          <div className="text-gray-400 text-xs sm:text-sm uppercase tracking-wide">{t('experience')}</div>
         </div>
         <div className="text-center">
           <div className="text-4xl sm:text-6xl font-bold text-orange-600 mb-2">{animatedStats.satisfaction}%</div>
-          <div className="text-gray-600 text-xs sm:text-sm uppercase tracking-wide">{t('satisfaction')}</div>
+          <div className="text-gray-400 text-xs sm:text-sm uppercase tracking-wide">{t('satisfaction')}</div>
         </div>
         <div className="text-center">
           <div className="text-4xl sm:text-6xl font-bold text-orange-600 mb-2">{animatedStats.cities}+</div>
-          <div className="text-gray-600 text-xs sm:text-sm uppercase tracking-wide">{t('cities')}</div>
+          <div className="text-gray-400 text-xs sm:text-sm uppercase tracking-wide">{t('cities')}</div>
         </div>
       </div>
     </section>

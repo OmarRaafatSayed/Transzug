@@ -54,22 +54,22 @@ export function ServicesSection() {
   ];
 
   return (
-    <section id="services" className="container mx-auto px-4 sm:px-8 py-12 sm:py-20">
+    <section id="services" className="container mx-auto px-4 sm:px-8 py-12 sm:py-20 bg-[#0a0f1a]">
       <div className="max-w-2xl mb-10 sm:mb-16">
-        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">{t('title')}</h2>
-        <p className="text-base sm:text-xl text-gray-600">{t('subtitle')}</p>
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 text-white">{t('title')}</h2>
+        <p className="text-base sm:text-xl text-gray-300">{t('subtitle')}</p>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-8">
         {services.map((service, index) => (
           <Link key={index} href={`/${locale}${service.link}`}
-            className="group bg-white rounded-2xl overflow-hidden border-2 border-gray-100 hover:border-orange-200 hover:shadow-xl transition-all">
-            <div className="aspect-[16/10] bg-gray-100 relative overflow-hidden">
+            className="group bg-[#151b28] rounded-2xl overflow-hidden border-2 border-gray-800 hover:border-orange-600 hover:shadow-xl transition-all">
+            <div className="aspect-[16/10] bg-gray-900 relative overflow-hidden">
               <Image src={service.image} alt={t(service.titleKey)} fill
                 className="object-cover group-hover:scale-105 transition-transform duration-300" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" />
             </div>
             <div className="p-5 sm:p-6">
-              <h3 className="text-lg sm:text-xl font-bold mb-2 group-hover:text-orange-600 transition-colors">{t(service.titleKey)}</h3>
-              <p className="text-gray-600 mb-4 leading-relaxed text-sm sm:text-base">{t(service.descKey)}</p>
+              <h3 className="text-lg sm:text-xl font-bold mb-2 text-white group-hover:text-orange-600 transition-colors">{t(service.titleKey)}</h3>
+              <p className="text-gray-300 mb-4 leading-relaxed text-sm sm:text-base">{t(service.descKey)}</p>
               <span className="inline-flex items-center text-orange-600 font-semibold text-sm">
                 {t('cta')}
                 <svg className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">

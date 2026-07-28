@@ -9,13 +9,13 @@ export function BeforeAfterSection() {
   const [sliderPosition, setSliderPosition] = useState(50);
 
   return (
-    <section className="py-12 sm:py-20 bg-gray-50">
+    <section className="py-12 sm:py-20 bg-[#0a0f1a]">
       <div className="container mx-auto px-4 sm:px-8">
         <div className="max-w-3xl mb-10 sm:mb-16">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">{t('title')}</h2>
-          <p className="text-base sm:text-xl text-gray-600">{t('subtitle')}</p>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 text-white">{t('title')}</h2>
+          <p className="text-base sm:text-xl text-gray-300">{t('subtitle')}</p>
         </div>
-        <div className="relative max-w-6xl mx-auto aspect-video rounded-2xl sm:rounded-3xl overflow-hidden border-2 sm:border-4 border-white shadow-2xl">
+        <div className="relative max-w-6xl mx-auto aspect-video rounded-2xl sm:rounded-3xl overflow-hidden border-2 sm:border-4 border-gray-800 shadow-2xl">
           <Image src="/images/before-after-after.jpg" alt={t('after')} fill className="object-cover" sizes="100vw" />
           <div className="absolute inset-0" style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }}>
             <Image src="/images/before-after-before.jpg" alt={t('before')} fill className="object-cover" sizes="100vw" />

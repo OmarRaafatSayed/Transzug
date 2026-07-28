@@ -54,17 +54,17 @@ export function WhySection() {
   ];
 
   return (
-    <section className="container mx-auto px-4 sm:px-8 py-12 sm:py-20">
+    <section className="container mx-auto px-4 sm:px-8 py-12 sm:py-20 bg-[#0d1220]">
       <div className="max-w-3xl mb-10 sm:mb-16">
-        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">{t('title')}</h2>
-        <p className="text-base sm:text-xl text-gray-600">{t('subtitle')}</p>
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 text-white">{t('title')}</h2>
+        <p className="text-base sm:text-xl text-gray-300">{t('subtitle')}</p>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {promises.map((promise, index) => (
-          <div key={index} className="bg-white border-2 border-gray-100 rounded-2xl p-6 sm:p-8 hover:border-orange-200 hover:shadow-lg transition-all">
+          <div key={index} className="bg-[#151b28] border-2 border-gray-800 rounded-2xl p-6 sm:p-8 hover:border-orange-600 hover:shadow-lg transition-all">
             {promise.icon}
-            <h3 className="text-lg sm:text-xl font-bold mb-3">{t(promise.titleKey)}</h3>
-            <p className="text-gray-600 leading-relaxed text-sm sm:text-base">{t(promise.descKey)}</p>
+            <h3 className="text-lg sm:text-xl font-bold mb-3 text-white">{t(promise.titleKey)}</h3>
+            <p className="text-gray-300 leading-relaxed text-sm sm:text-base">{t(promise.descKey)}</p>
           </div>
         ))}
       </div>

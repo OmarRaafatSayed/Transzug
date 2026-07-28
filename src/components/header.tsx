@@ -20,11 +20,11 @@ export function Header() {
   ];
 
   return (
-    <header className="sticky top-0 z-50 bg-white border-b">
+    <header className="sticky top-0 z-50 bg-[#0a0f1a] border-b border-gray-800">
       <div className="container mx-auto px-4 sm:px-8 h-16 sm:h-20 flex items-center justify-between">
 
         {/* Logo */}
-        <Link href={`/${locale}`} className="flex items-center gap-2 text-xl sm:text-2xl font-bold flex-shrink-0">
+        <Link href={`/${locale}`} className="flex items-center gap-2 text-xl sm:text-2xl font-bold flex-shrink-0 text-white">
           <div className="w-8 h-8 sm:w-9 sm:h-9 bg-primary rounded-full flex items-center justify-center text-white text-sm sm:text-base">
             T
           </div>
@@ -34,7 +34,7 @@ export function Header() {
         {/* Desktop Nav */}
         <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
           {navLinks.map((link) => (
-            <Link key={link.href} href={link.href} className="text-sm hover:text-primary transition-colors whitespace-nowrap">
+            <Link key={link.href} href={link.href} className="text-sm text-gray-300 hover:text-primary transition-colors whitespace-nowrap">
               {link.label}
             </Link>
           ))}
@@ -53,7 +53,7 @@ export function Header() {
           <LanguageSwitcher />
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className="p-2 rounded-lg hover:bg-gray-100 transition-colors"
+            className="p-2 rounded-lg hover:bg-gray-800 transition-colors text-white"
             aria-label="Toggle menu"
           >
             {menuOpen ? (
@@ -71,14 +71,14 @@ export function Header() {
 
       {/* Mobile Menu */}
       {menuOpen && (
-        <div className="lg:hidden border-t bg-white shadow-lg">
+        <div className="lg:hidden border-t border-gray-800 bg-[#0d1220] shadow-lg">
           <nav className="container mx-auto px-4 py-4 flex flex-col gap-1">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 onClick={() => setMenuOpen(false)}
-                className="py-3 px-4 rounded-lg hover:bg-gray-50 text-gray-700 hover:text-primary transition-colors font-medium"
+                className="py-3 px-4 rounded-lg hover:bg-gray-800 text-gray-300 hover:text-primary transition-colors font-medium"
               >
                 {link.label}
               </Link>
