@@ -4,10 +4,12 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
+import { useDashboard } from '@/lib/context/dashboard-context';
 
 export function HeroSection() {
   const t = useTranslations('hero');
   const locale = useLocale();
+  const { heroStats, heroSlides } = useDashboard();
   const [currentSlide, setCurrentSlide] = useState(0);
   const [animatedStats, setAnimatedStats] = useState({
     rating: 0,
@@ -16,12 +18,9 @@ export function HeroSection() {
     insurance: 0
   });
 
-  const slides = [
-    '/images/hero-1.jpg',
-    '/images/hero-2.jpg',
-    '/images/hero-3.jpg',
-    '/images/hero-4.jpg'
-  ];
+  // Filter only enabled slides
+  const enabledSlides = heroSlides.filter((slide) => slide.enabled);
+  const slides = enabledSlides.length > 0 ? enabledSlides : heroSlides;
 
   // Carousel effect
   useEffect(() => {
@@ -31,17 +30,17 @@ export function HeroSection() {
     return () => clearInterval(interval);
   }, [slides.length]);
 
-  // Animated counter effect
+  // Animated counter effect - use stats from context
   useEffect(() => {
     const duration = 2000; // 2 seconds
     const steps = 60;
     const stepDuration = duration / steps;
     
     const targets = {
-      rating: 4.9,
-      years: 10,
-      moves: 500,
-      insurance: 100
+      rating: heroStats.rating,
+      years: heroStats.years,
+      moves: heroStats.moves,
+      insurance: heroStats.insurance
     };
 
     let currentStep = 0;
@@ -63,7 +62,7 @@ export function HeroSection() {
     }, stepDuration);
 
     return () => clearInterval(timer);
-  }, []);
+  }, [heroStats]);
 
   return (
     <section className="relative w-full h-screen flex items-center overflow-hidden bg-black">
@@ -71,14 +70,14 @@ export function HeroSection() {
       <div className="absolute inset-0">
         {slides.map((slide, index) => (
           <div
-            key={index}
+            key={slide.id}
             className={`absolute inset-0 transition-opacity duration-1000 ${
               index === currentSlide ? 'opacity-100' : 'opacity-0'
             }`}
           >
             <Image
-              src={slide}
-              alt={`Hero ${index + 1}`}
+              src={slide.src}
+              alt={slide.alt}
               fill
               className="object-cover object-center"
               priority={index === 0}

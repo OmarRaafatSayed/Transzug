@@ -3,6 +3,7 @@ import { getMessages } from 'next-intl/server';
 import { Geist, Geist_Mono, Cairo } from "next/font/google";
 import { notFound } from 'next/navigation';
 import { locales } from '../../../i18n';
+import { DashboardProvider } from '@/lib/context/dashboard-context';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -47,9 +48,11 @@ export default async function LocaleLayout({
       className={`${isRTL ? cairo.variable : geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className={`min-h-full flex flex-col ${isRTL ? 'font-cairo' : 'font-sans'}`}>
-        <NextIntlClientProvider messages={messages}>
-          {children}
-        </NextIntlClientProvider>
+        <DashboardProvider>
+          <NextIntlClientProvider messages={messages}>
+            {children}
+          </NextIntlClientProvider>
+        </DashboardProvider>
       </body>
     </html>
   );
