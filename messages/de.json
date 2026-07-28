@@ -266,6 +266,58 @@
       "submit": "Anfrage senden"
     }
   },
+  "servicePages": {
+    "included": "Das ist enthalten",
+    "startingPrice": "AB-PREIS",
+    "priceNote": "Endgültiger Preis nach kostenloser Besichtigung.",
+    "quickQuote": "Schnelles Angebot",
+    "sendRequest": "Anfrage senden",
+    "otherServices": "Weitere Leistungen",
+    "learnMore": "Mehr erfahren",
+    "features": {
+      "packaging": "Verpackungsmaterial",
+      "furniture": "Möbelmontage und -demontage",
+      "transport": "Transport und Beladung",
+      "insurance": "Vollständige Versicherung",
+      "stairs": "Treppen- und Aufzugsservice",
+      "disposal": "Entsorgung von Verpackungen"
+    },
+    "privatumzug": {
+      "title": "Privatumzug",
+      "subtitle": "Kompletter Wohnungs­umzug inklusive Verpackung, Transport und Aufbau.",
+      "price": "ab €499"
+    },
+    "firmenumzug": {
+      "title": "Firmen- & Büroumzug",
+      "subtitle": "Reibungsloser Standortwechsel mit minimaler Betriebs­unterbrechung.",
+      "price": "ab €1.290"
+    },
+    "seniorenumzug": {
+      "title": "Seniorenumzug",
+      "subtitle": "Einfühlsame Betreuung und Rundum-Service für einen entspannten Neustart.",
+      "price": "ab €599"
+    },
+    "moebellagerung": {
+      "title": "Möbellagerung",
+      "subtitle": "Sichere, klimatisierte Lagerung — flexibel für Tage, Wochen oder Monate.",
+      "price": "ab €49"
+    },
+    "entruempelung": {
+      "title": "Entrümpelung",
+      "subtitle": "Fachgerechte Wohnungs­auflösung inklusive Entsorgung — besen­rein übergeben.",
+      "price": "ab €349"
+    },
+    "fernumzug": {
+      "title": "Fernumzug deutschlandweit",
+      "subtitle": "Zuverlässige Langstrecken­umzüge in ganz Deutschland — Tür zu Tür.",
+      "price": "ab €899"
+    },
+    "lkwLogistik": {
+      "title": "LKW-Transporte & Logistik",
+      "subtitle": "Eigene LKW-Flotte und feste Rahmen­verträge für Logistik- und Industrie­unternehmen.",
+      "price": "ab €690"
+    }
+  },
   "footer": {
     "description": "Transzug ist Ihr deutschlandweiter Partner für sichere, pünktliche und transparent kalkulierte Umzüge.",
     "quickLinks": "Schnellzugriff",
