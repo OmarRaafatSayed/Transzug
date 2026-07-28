@@ -234,6 +234,38 @@
     "subtitle": "Fordern Sie jetzt Ihr kostenloses Angebot an — unverbindlich und in 24 Stunden.",
     "button": "Jetzt Angebot anfordern"
   },
+  "contact": {
+    "title": "Kontakt aufnehmen",
+    "subtitle": "Wir melden uns innerhalb von 24 Stunden mit einem verbindlichen Angebot.",
+    "phone": "+49 30 123 456 78",
+    "email": "info@transzug.de",
+    "address": "Musterstraße 12, 10115 Berlin",
+    "form": {
+      "firstName": "Vorname",
+      "lastName": "Nachname",
+      "email": "E-Mail",
+      "phone": "Telefon",
+      "moveType": "Umzugstyp",
+      "moveTypePlaceholder": "Bitte auswählen",
+      "moveTypeOptions": {
+        "private": "Privatumzug",
+        "office": "Firmen- & Büroumzug",
+        "senior": "Seniorenumzug",
+        "longDistance": "Fernumzug",
+        "other": "Sonstiges"
+      },
+      "date": "Gewünschter Umzugstermin",
+      "from": "Von (PLZ, Ort)",
+      "fromPlaceholder": "z.B. 10115 Berlin",
+      "to": "Nach (PLZ, Ort)",
+      "toPlaceholder": "z.B. 20095 Hamburg",
+      "message": "Nachricht",
+      "messagePlaceholder": "Beschreiben Sie Ihren Umzug (Wohnungsgröße, Besonderheiten, etc.)",
+      "privacy": "Ich stimme der Verarbeitung meiner Daten gemäß der Datenschutzerklärung zu.",
+      "required": "*",
+      "submit": "Anfrage senden"
+    }
+  },
   "footer": {
     "description": "Transzug ist Ihr deutschlandweiter Partner für sichere, pünktliche und transparent kalkulierte Umzüge.",
     "quickLinks": "Schnellzugriff",

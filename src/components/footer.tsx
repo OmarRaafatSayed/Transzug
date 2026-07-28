@@ -8,9 +8,9 @@ export function Footer() {
   const locale = useLocale();
 
   return (
-    <footer className="bg-gray-900 text-white py-16">
-      <div className="container mx-auto px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+    <footer className="bg-gray-900 text-white py-12 sm:py-16">
+      <div className="container mx-auto px-4 sm:px-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12 mb-10 sm:mb-12">
           {/* Company Info */}
           <div>
             <div className="flex items-center gap-3 mb-6">
@@ -104,7 +104,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+        <div className="border-t border-gray-800 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-center sm:text-left">
           <p className="text-gray-400 text-sm">
             {t('copyright')}
           </p>
