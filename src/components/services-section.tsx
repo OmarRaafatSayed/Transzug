@@ -4,7 +4,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useTranslations, useLocale } from 'next-intl';
 import { useServices } from '@/hooks/useStoreApi';
-import type { ServiceStoreDto } from '@/types/store';
 
 // ── Skeleton ─────────────────────────────────────────────────────
 function ServiceCardSkeleton() {
@@ -21,25 +20,11 @@ function ServiceCardSkeleton() {
   );
 }
 
-// ── Fallback static data (matches official ServiceStoreDto shape) ─
-const STATIC_SERVICES: ServiceStoreDto[] = [
-  { title: 'Privatumzug', description: 'Wir kümmern uns um Ihren privaten Umzug von A bis Z.', shortDescription: 'Professioneller Privatumzug', image: ['/images/service-privatumzug.jpg'], slug: 'privatumzug' },
-  { title: 'Firmenumzug', description: 'Büroumzüge mit minimaler Ausfallzeit für Ihr Unternehmen.', shortDescription: 'Effiziente Büroumzüge', image: ['/images/service-firmenumzug.jpg'], slug: 'firmenumzug' },
-  { title: 'Seniorenumzug', description: 'Einfühlsamer Umzugsdienst für Senioren.', shortDescription: 'Umzug für Senioren', image: ['/images/service-seniorenumzug.jpg'], slug: 'seniorenumzug' },
-  { title: 'Möbellagerung', description: 'Sichere Lagerung Ihrer Möbel in unseren Lagerhäusern.', shortDescription: 'Möbel einlagern', image: ['/images/service-moebellagerung.jpg'], slug: 'moebellagerung' },
-  { title: 'Entrümpelung', description: 'Professionelle Entrümpelung und Entsorgung.', shortDescription: 'Entrümpelung', image: ['/images/service-entruempelung.jpg'], slug: 'entruempelung' },
-  { title: 'Fernumzug', description: 'Deutschlandweite und internationale Umzüge.', shortDescription: 'Fernumzug', image: ['/images/service-fernumzug.jpg'], slug: 'fernumzug' },
-  { title: 'LKW & Logistik', description: 'Logistiklösungen mit modernem Fuhrpark.', shortDescription: 'Transport & Logistik', image: ['/images/service-lkw.jpg'], slug: 'lkw-logistik' },
-];
-
 // ── Component ─────────────────────────────────────────────────────
 export function ServicesSection() {
   const t = useTranslations('services');
   const locale = useLocale();
-  const { data: apiServices, loading } = useServices();
-
-  // Use API data if available, fall back to static list
-  const services = apiServices && apiServices.length > 0 ? apiServices : STATIC_SERVICES;
+  const { data: apiServices, loading } = useServices(locale);
 
   return (
     <section id="services" className="container mx-auto px-4 sm:px-8 py-12 sm:py-20 bg-[#0a0f1a]">
@@ -51,7 +36,7 @@ export function ServicesSection() {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-8">
         {loading
           ? [...Array(7)].map((_, i) => <ServiceCardSkeleton key={i} />)
-          : services.map((service, index) => {
+          : (apiServices ?? []).map((service, index) => {
               const slug = service.slug ?? service.title.toLowerCase().replace(/\s+/g, '-').replace(/[&ä]/g, '');
               const imgSrc = Array.isArray(service.image) && service.image[0]
                 ? service.image[0]
