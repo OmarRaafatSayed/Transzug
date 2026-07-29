@@ -31,7 +31,7 @@ export function Header() {
 
         {/* Logo — uses name from LandingInfo API */}
         <Link href={`/${locale}`} className="flex items-center gap-2 text-xl sm:text-2xl font-bold flex-shrink-0 text-white">
-          <div className="w-8 h-8 sm:w-9 sm:h-9 bg-primary rounded-full flex items-center justify-center text-white text-sm sm:text-base">
+          <div className="w-8 h-8 sm:w-9 sm:h-9 bg-brand-primary rounded-full flex items-center justify-center text-white text-sm sm:text-base">
             {companyName.charAt(0).toUpperCase()}
           </div>
           <span>{companyName}</span>
@@ -40,7 +40,7 @@ export function Header() {
         {/* Desktop Nav */}
         <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
           {navLinks.map((link) => (
-            <Link key={link.href} href={link.href} className="text-sm text-gray-300 hover:text-primary transition-colors whitespace-nowrap">
+            <Link key={link.href} href={link.href} className="text-sm text-gray-300 hover:text-brand-primary transition-colors whitespace-nowrap">
               {link.label}
             </Link>
           ))}
@@ -55,7 +55,7 @@ export function Header() {
             </a>
           )}
           <LanguageSwitcher />
-          <Link href={`/${locale}/kontakt`} className="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors text-sm whitespace-nowrap">
+          <Link href={`/${locale}/kontakt`} className="bg-brand-primary text-white px-4 py-2 rounded-lg hover:bg-brand-hover transition-colors text-sm whitespace-nowrap">
             {t('cta')}
           </Link>
         </div>
@@ -90,7 +90,7 @@ export function Header() {
                 key={link.href}
                 href={link.href}
                 onClick={() => setMenuOpen(false)}
-                className="py-3 px-4 rounded-lg hover:bg-gray-800 text-gray-300 hover:text-primary transition-colors font-medium"
+                className="py-3 px-4 rounded-lg hover:bg-gray-800 text-gray-300 hover:text-brand-primary transition-colors font-medium"
               >
                 {link.label}
               </Link>
@@ -107,7 +107,7 @@ export function Header() {
             <Link
               href={`/${locale}/kontakt`}
               onClick={() => setMenuOpen(false)}
-              className="mt-2 bg-primary text-white py-3 px-4 rounded-lg text-center font-semibold hover:bg-primary/90 transition-colors"
+              className="mt-2 bg-brand-primary text-white py-3 px-4 rounded-lg text-center font-semibold hover:bg-brand-hover transition-colors"
             >
               {t('cta')}
             </Link>
