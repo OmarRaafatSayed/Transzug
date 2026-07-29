@@ -6,35 +6,50 @@ import { useTranslations } from 'next-intl';
 import { PlusIcon, TrashIcon, XIcon, UploadIcon } from 'lucide-react';
 import type { GalleryStoreDto } from '@/types/store';
 
+// ── Stable keys (stored in DB) ───────────────────────────────────
+// These never change regardless of locale — used for filtering
+export const CATEGORY_KEYS = [
+  'all',
+  'private',
+  'office',
+  'senior',
+  'storage',
+  'cleaning',
+  'longDistance',
+  'logistics',
+] as const;
+
+type CategoryKey = (typeof CATEGORY_KEYS)[number];
+
 // ── Component ────────────────────────────────────────────────────
 export function GalleryManager() {
   const t = useTranslations('dashboard');
 
-  // Categories derived from translation keys so they switch with locale
-  const CATEGORIES = [
-    t('gallery.all'),
-    t('gallery.catPrivate'),
-    t('gallery.catOffice'),
-    t('gallery.catSenior'),
-    t('gallery.catStorage'),
-    t('gallery.catCleaning'),
-    t('gallery.catLongDistance'),
-    t('gallery.catLogistics'),
-  ];
+  // Map each stable key -> translated label for display
+  const categoryLabel: Record<CategoryKey, string> = {
+    all:          t('gallery.all'),
+    private:      t('gallery.catPrivate'),
+    office:       t('gallery.catOffice'),
+    senior:       t('gallery.catSenior'),
+    storage:      t('gallery.catStorage'),
+    cleaning:     t('gallery.catCleaning'),
+    longDistance: t('gallery.catLongDistance'),
+    logistics:    t('gallery.catLogistics'),
+  };
 
-  const [images, setImages]               = useState<GalleryStoreDto[]>([]);
-  const [loading, setLoading]             = useState(true);
-  const [error, setError]                 = useState<string | null>(null);
-  const [selectedCategory, setSelectedCategory] = useState(CATEGORIES[0]);
-  const [lightboxImg, setLightboxImg]     = useState<GalleryStoreDto | null>(null);
-  const [showAddModal, setShowAddModal]   = useState(false);
-  const [saving, setSaving]               = useState(false);
+  const [images, setImages]             = useState<GalleryStoreDto[]>([]);
+  const [loading, setLoading]           = useState(true);
+  const [error, setError]               = useState<string | null>(null);
+  const [selectedKey, setSelectedKey]   = useState<CategoryKey>('all');
+  const [lightboxImg, setLightboxImg]   = useState<GalleryStoreDto | null>(null);
+  const [showAddModal, setShowAddModal] = useState(false);
+  const [saving, setSaving]             = useState(false);
 
-  const [newTitle, setNewTitle]           = useState('');
-  const [newDescription, setNewDescription] = useState('');
-  const [newCategory, setNewCategory]     = useState(CATEGORIES[1]);
-  const [imagePreview, setImagePreview]   = useState('');
-  const [imageFile, setImageFile]         = useState<File | null>(null);
+  const [newTitle, setNewTitle]               = useState('');
+  const [newDescription, setNewDescription]   = useState('');
+  const [newCategoryKey, setNewCategoryKey]   = useState<CategoryKey>('private');
+  const [imagePreview, setImagePreview]       = useState('');
+  const [imageFile, setImageFile]             = useState<File | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   // ── Fetch ────────────────────────────────────────────────────
@@ -54,16 +69,27 @@ export function GalleryManager() {
     }
   }, [t]);
 
-  useEffect(() => {
-    fetchImages();
-  }, [fetchImages]);
+  useEffect(() => { fetchImages(); }, [fetchImages]);
 
-  // ── Filtered view ────────────────────────────────────────────
-  const allLabel = t('gallery.all');
-  const filtered =
-    selectedCategory === allLabel
-      ? images
-      : images.filter((img) => img.description?.startsWith(selectedCategory));
+  // ── Filter: description format is "categoryKey|optionalDesc"
+  // Fallback: also match Arabic legacy labels for existing data
+  const LEGACY_MAP: Record<CategoryKey, string> = {
+    all:          '',
+    private:      'نقل خاص',
+    office:       'نقل مكتبي',
+    senior:       'نقل كبار السن',
+    storage:      'تخزين أثاث',
+    cleaning:     'تنظيف',
+    longDistance: 'نقل بعيد',
+    logistics:    'لوجستيك',
+  };
+
+  const filtered = selectedKey === 'all'
+    ? images
+    : images.filter((img) => {
+        const key = img.description?.split('|')[0] ?? '';
+        return key === selectedKey || key === LEGACY_MAP[selectedKey];
+      });
 
   // ── Delete ───────────────────────────────────────────────────
   async function handleDelete(id: string) {
@@ -86,7 +112,7 @@ export function GalleryManager() {
     reader.readAsDataURL(file);
   }
 
-  // ── Add image ────────────────────────────────────────────────
+  // ── Add: store stable key, not translated label ──────────────
   async function handleAdd() {
     if (!imagePreview || !newTitle) return;
     setSaving(true);
@@ -95,9 +121,10 @@ export function GalleryManager() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          image: imagePreview,
-          title: newTitle,
-          description: `${newCategory}|${newDescription}`,
+          image:       imagePreview,
+          title:       newTitle,
+          // Store the stable key so filtering always works
+          description: `${newCategoryKey}|${newDescription}`,
         }),
       });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
@@ -114,10 +141,19 @@ export function GalleryManager() {
   function resetModal() {
     setNewTitle('');
     setNewDescription('');
-    setNewCategory(CATEGORIES[1]);
+    setNewCategoryKey('private');
     setImagePreview('');
     setImageFile(null);
     setShowAddModal(false);
+  }
+
+  // ── Resolve display label for a stored description ───────────
+  function resolveLabel(description: string | undefined): string {
+    const key = description?.split('|')[0] ?? '';
+    // If it's a stable key, translate it
+    if (key in categoryLabel) return categoryLabel[key as CategoryKey];
+    // Legacy Arabic labels — show as-is
+    return key;
   }
 
   // ── Render ───────────────────────────────────────────────────
@@ -133,10 +169,7 @@ export function GalleryManager() {
     return (
       <div className="flex flex-col items-center justify-center py-20 text-center gap-4">
         <p className="text-red-400 text-sm">{error}</p>
-        <button
-          onClick={fetchImages}
-          className="px-4 py-2 bg-brand-primary hover:bg-brand-hover text-white rounded-lg text-sm transition-colors"
-        >
+        <button onClick={fetchImages} className="px-4 py-2 bg-brand-primary hover:bg-brand-hover text-white rounded-lg text-sm transition-colors">
           {t('common.retry')}
         </button>
       </div>
@@ -149,9 +182,7 @@ export function GalleryManager() {
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
         <div>
           <h2 className="text-lg font-bold text-white">{t('gallery.title')}</h2>
-          <p className="text-gray-400 text-sm">
-            {t('gallery.count', { count: images.length })}
-          </p>
+          <p className="text-gray-400 text-sm">{t('gallery.count', { count: images.length })}</p>
         </div>
         <button
           onClick={() => setShowAddModal(true)}
@@ -162,19 +193,19 @@ export function GalleryManager() {
         </button>
       </div>
 
-      {/* Category Filter */}
+      {/* Category Filter — uses stable keys, displays translated labels */}
       <div className="flex flex-wrap gap-2 mb-6">
-        {CATEGORIES.map((cat) => (
+        {CATEGORY_KEYS.map((key) => (
           <button
-            key={cat}
-            onClick={() => setSelectedCategory(cat)}
+            key={key}
+            onClick={() => setSelectedKey(key)}
             className={`px-4 py-1.5 rounded-full text-sm font-medium transition-colors ${
-              selectedCategory === cat
+              selectedKey === key
                 ? 'bg-brand-primary text-white'
                 : 'bg-[#151b28] text-gray-400 hover:text-white border border-gray-700 hover:border-gray-500'
             }`}
           >
-            {cat}
+            {categoryLabel[key]}
           </button>
         ))}
       </div>
@@ -187,57 +218,42 @@ export function GalleryManager() {
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          {filtered.map((img) => {
-            const descParts = img.description?.split('|') ?? [];
-            const category  = descParts.length > 1 ? descParts[0] : '';
-            const desc      = descParts.length > 1 ? descParts[1] : img.description;
-
-            return (
-              <div
-                key={img.id}
-                className="group relative bg-[#151b28] rounded-xl overflow-hidden border border-gray-800 hover:border-brand-primary transition-all"
-              >
-                <div
-                  className="aspect-square relative cursor-pointer"
-                  onClick={() => setLightboxImg(img)}
-                >
-                  <Image
-                    src={img.image}
-                    alt={img.title}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-300"
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                  />
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors" />
-                </div>
-
-                <div className="p-3 flex items-center justify-between">
-                  <div className="min-w-0">
-                    <p className="text-white text-xs font-medium truncate">{img.title}</p>
-                    {category && (
-                      <span className="text-brand-primary text-[10px]">{category}</span>
-                    )}
-                  </div>
-                  <button
-                    onClick={() => handleDelete(img.id)}
-                    className="text-gray-600 hover:text-red-500 transition-colors p-1 rounded flex-shrink-0"
-                    aria-label={t('gallery.delete')}
-                  >
-                    <TrashIcon className="w-3.5 h-3.5" />
-                  </button>
-                </div>
+          {filtered.map((img) => (
+            <div
+              key={img.id}
+              className="group relative bg-[#151b28] rounded-xl overflow-hidden border border-gray-800 hover:border-brand-primary transition-all"
+            >
+              <div className="aspect-square relative cursor-pointer" onClick={() => setLightboxImg(img)}>
+                <Image
+                  src={img.image}
+                  alt={img.title}
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-300"
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                />
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors" />
               </div>
-            );
-          })}
+              <div className="p-3 flex items-center justify-between">
+                <div className="min-w-0">
+                  <p className="text-white text-xs font-medium truncate">{img.title}</p>
+                  <span className="text-brand-primary text-[10px]">{resolveLabel(img.description)}</span>
+                </div>
+                <button
+                  onClick={() => handleDelete(img.id)}
+                  className="text-gray-600 hover:text-red-500 transition-colors p-1 rounded flex-shrink-0"
+                  aria-label={t('gallery.delete')}
+                >
+                  <TrashIcon className="w-3.5 h-3.5" />
+                </button>
+              </div>
+            </div>
+          ))}
         </div>
       )}
 
       {/* Lightbox */}
       {lightboxImg && (
-        <div
-          className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4"
-          onClick={() => setLightboxImg(null)}
-        >
+        <div className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4" onClick={() => setLightboxImg(null)}>
           <button
             className="absolute top-4 end-4 text-white bg-gray-800 hover:bg-gray-700 rounded-full p-2 transition-colors"
             onClick={() => setLightboxImg(null)}
@@ -249,17 +265,11 @@ export function GalleryManager() {
             className="relative max-w-3xl w-full max-h-[80vh] aspect-video rounded-2xl overflow-hidden"
             onClick={(e) => e.stopPropagation()}
           >
-            <Image
-              src={lightboxImg.image}
-              alt={lightboxImg.title}
-              fill
-              className="object-contain"
-              sizes="(max-width: 768px) 100vw, 75vw"
-            />
+            <Image src={lightboxImg.image} alt={lightboxImg.title} fill className="object-contain" sizes="(max-width: 768px) 100vw, 75vw" />
           </div>
           <div className="absolute bottom-6 text-center">
             <p className="text-white font-medium">{lightboxImg.title}</p>
-            <p className="text-gray-400 text-sm">{lightboxImg.description}</p>
+            <p className="text-gray-400 text-sm">{resolveLabel(lightboxImg.description)}</p>
           </div>
         </div>
       )}
@@ -270,25 +280,15 @@ export function GalleryManager() {
           <div className="bg-[#151b28] border border-gray-700 rounded-2xl p-6 w-full max-w-md shadow-2xl">
             <div className="flex items-center justify-between mb-5">
               <h3 className="text-white font-bold text-lg">{t('gallery.addTitle')}</h3>
-              <button
-                onClick={resetModal}
-                className="text-gray-400 hover:text-white transition-colors"
-              >
+              <button onClick={resetModal} className="text-gray-400 hover:text-white transition-colors">
                 <XIcon className="w-5 h-5" />
               </button>
             </div>
 
             <div className="space-y-4">
-              {/* Upload */}
               <div>
                 <label className="block text-sm text-gray-400 mb-1.5">{t('gallery.chooseImage')}</label>
-                <input
-                  ref={fileInputRef}
-                  type="file"
-                  accept="image/*"
-                  onChange={handleFileSelect}
-                  className="hidden"
-                />
+                <input ref={fileInputRef} type="file" accept="image/*" onChange={handleFileSelect} className="hidden" />
                 <button
                   type="button"
                   onClick={() => fileInputRef.current?.click()}
@@ -301,19 +301,14 @@ export function GalleryManager() {
                   ) : (
                     <div className="flex flex-col items-center gap-2">
                       <UploadIcon className="w-10 h-10 text-gray-600 group-hover:text-brand-primary transition-colors" />
-                      <p className="text-sm text-gray-400 group-hover:text-gray-300">
-                        {t('gallery.clickToChoose')}
-                      </p>
+                      <p className="text-sm text-gray-400 group-hover:text-gray-300">{t('gallery.clickToChoose')}</p>
                       <p className="text-xs text-gray-600">{t('gallery.imageHint')}</p>
                     </div>
                   )}
                 </button>
-                {imageFile && (
-                  <p className="text-xs text-gray-500 mt-1.5">📁 {imageFile.name}</p>
-                )}
+                {imageFile && <p className="text-xs text-gray-500 mt-1.5">📁 {imageFile.name}</p>}
               </div>
 
-              {/* Title */}
               <div>
                 <label className="block text-sm text-gray-400 mb-1.5">{t('gallery.imageTitle')}</label>
                 <input
@@ -325,25 +320,22 @@ export function GalleryManager() {
                 />
               </div>
 
-              {/* Category */}
               <div>
                 <label className="block text-sm text-gray-400 mb-1.5">{t('gallery.category')}</label>
                 <select
-                  value={newCategory}
-                  onChange={(e) => setNewCategory(e.target.value)}
+                  value={newCategoryKey}
+                  onChange={(e) => setNewCategoryKey(e.target.value as CategoryKey)}
                   className="w-full bg-[#0d1220] border border-gray-700 rounded-lg px-4 py-2.5 text-white text-sm focus:outline-none focus:border-brand-primary transition-colors"
                 >
-                  {CATEGORIES.filter((c) => c !== allLabel).map((cat) => (
-                    <option key={cat} value={cat}>{cat}</option>
+                  {CATEGORY_KEYS.filter((k) => k !== 'all').map((key) => (
+                    <option key={key} value={key}>{categoryLabel[key]}</option>
                   ))}
                 </select>
               </div>
 
-              {/* Description */}
               <div>
                 <label className="block text-sm text-gray-400 mb-1.5">
-                  {t('gallery.imageDesc')}{' '}
-                  <span className="text-gray-600">{t('gallery.imageDescOptional')}</span>
+                  {t('gallery.imageDesc')} <span className="text-gray-600">{t('gallery.imageDescOptional')}</span>
                 </label>
                 <input
                   type="text"
@@ -363,10 +355,7 @@ export function GalleryManager() {
               >
                 {saving ? t('gallery.saving') : t('gallery.add')}
               </button>
-              <button
-                onClick={resetModal}
-                className="flex-1 bg-gray-800 hover:bg-gray-700 text-gray-300 py-2.5 rounded-lg text-sm font-medium transition-colors"
-              >
+              <button onClick={resetModal} className="flex-1 bg-gray-800 hover:bg-gray-700 text-gray-300 py-2.5 rounded-lg text-sm font-medium transition-colors">
                 {t('gallery.cancel')}
               </button>
             </div>
