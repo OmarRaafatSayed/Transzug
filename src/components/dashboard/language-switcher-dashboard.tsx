@@ -21,7 +21,7 @@ export function LanguageSwitcherDashboard() {
           onClick={() => handleLanguageChange(loc)}
           className={`px-3 py-1.5 text-xs font-semibold rounded-md transition-all ${
             locale === loc
-              ? 'bg-orange-600 text-white shadow-sm'
+              ? 'bg-brand-primary text-white shadow-sm'
               : 'text-gray-400 hover:text-white'
           }`}
         >

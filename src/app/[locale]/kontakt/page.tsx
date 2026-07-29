@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
@@ -25,7 +25,7 @@ export default function ContactPage() {
               {/* Contact Info */}
               <div className="space-y-8">
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-full bg-orange-600 flex items-center justify-center flex-shrink-0">
+                  <div className="w-12 h-12 rounded-full bg-brand-primary flex items-center justify-center flex-shrink-0">
                     <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
                       <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
                     </svg>
@@ -36,7 +36,7 @@ export default function ContactPage() {
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-full bg-orange-600 flex items-center justify-center flex-shrink-0">
+                  <div className="w-12 h-12 rounded-full bg-brand-primary flex items-center justify-center flex-shrink-0">
                     <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
                       <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
                       <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
@@ -48,7 +48,7 @@ export default function ContactPage() {
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-full bg-orange-600 flex items-center justify-center flex-shrink-0">
+                  <div className="w-12 h-12 rounded-full bg-brand-primary flex items-center justify-center flex-shrink-0">
                     <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
                     </svg>
@@ -68,14 +68,14 @@ export default function ContactPage() {
                         {t('form.firstName')} {t('form.required')}
                       </label>
                       <input type="text" required
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 bg-white" />
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-primary focus:border-brand-primary bg-white" />
                     </div>
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
                         {t('form.lastName')} {t('form.required')}
                       </label>
                       <input type="text" required
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 bg-white" />
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-primary focus:border-brand-primary bg-white" />
                     </div>
                   </div>
 
@@ -85,14 +85,14 @@ export default function ContactPage() {
                         {t('form.email')} {t('form.required')}
                       </label>
                       <input type="email" required
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 bg-white" />
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-primary focus:border-brand-primary bg-white" />
                     </div>
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
                         {t('form.phone')}
                       </label>
                       <input type="tel"
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 bg-white" />
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-primary focus:border-brand-primary bg-white" />
                     </div>
                   </div>
 
@@ -101,7 +101,7 @@ export default function ContactPage() {
                       <label className="block text-sm font-medium text-gray-700 mb-2">
                         {t('form.moveType')}
                       </label>
-                      <select className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 bg-white">
+                      <select className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-primary focus:border-brand-primary bg-white">
                         <option value="">{t('form.moveTypePlaceholder')}</option>
                         <option value="private">{t('form.moveTypeOptions.private')}</option>
                         <option value="office">{t('form.moveTypeOptions.office')}</option>
@@ -115,7 +115,7 @@ export default function ContactPage() {
                         {t('form.date')}
                       </label>
                       <input type="date"
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 bg-white" />
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-primary focus:border-brand-primary bg-white" />
                     </div>
                   </div>
 
@@ -125,14 +125,14 @@ export default function ContactPage() {
                         {t('form.from')}
                       </label>
                       <input type="text" placeholder={t('form.fromPlaceholder')}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 bg-white" />
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-primary focus:border-brand-primary bg-white" />
                     </div>
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
                         {t('form.to')}
                       </label>
                       <input type="text" placeholder={t('form.toPlaceholder')}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 bg-white" />
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-primary focus:border-brand-primary bg-white" />
                     </div>
                   </div>
 
@@ -141,16 +141,16 @@ export default function ContactPage() {
                       {t('form.message')}
                     </label>
                     <textarea rows={4} placeholder={t('form.messagePlaceholder')}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 bg-white resize-none">
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-primary focus:border-brand-primary bg-white resize-none">
                     </textarea>
                   </div>
 
                   <div className="flex items-start gap-3">
                     <input type="checkbox" id="privacy" required
-                      className="mt-1 w-4 h-4 text-orange-600 border-gray-300 rounded focus:ring-orange-500" />
+                      className="mt-1 w-4 h-4 text-brand-primary border-gray-300 rounded focus:ring-brand-primary" />
                     <label htmlFor="privacy" className="text-sm text-gray-600">
                       {t('form.privacy')}{' '}
-                      <Link href={`/${locale}/datenschutz`} className="text-orange-600 hover:underline">
+                      <Link href={`/${locale}/datenschutz`} className="text-brand-primary hover:underline">
                         Datenschutzerklärung
                       </Link>
                       {' '}{t('form.required')}
@@ -158,7 +158,7 @@ export default function ContactPage() {
                   </div>
 
                   <button type="submit"
-                    className="w-full bg-orange-600 text-white py-4 px-8 rounded-lg font-semibold hover:bg-orange-700 transition-colors text-lg">
+                    className="w-full bg-brand-primary text-white py-4 px-8 rounded-lg font-semibold hover:bg-brand-hover transition-colors text-lg">
                     {t('form.submit')}
                   </button>
                 </form>

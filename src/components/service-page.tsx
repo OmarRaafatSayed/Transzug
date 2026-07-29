@@ -62,7 +62,7 @@ export function ServicePage({ titleKey, subtitleKey, priceKey, image, related }:
                 <ul className="space-y-4">
                   {features.map((feature, i) => (
                     <li key={i} className="flex items-center gap-4">
-                      <div className="w-6 h-6 rounded-full bg-orange-600 flex items-center justify-center flex-shrink-0">
+                      <div className="w-6 h-6 rounded-full bg-brand-primary flex items-center justify-center flex-shrink-0">
                         <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
                           <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/>
                         </svg>
@@ -77,12 +77,12 @@ export function ServicePage({ titleKey, subtitleKey, priceKey, image, related }:
               <div>
                 <div className="bg-[#151b28] rounded-2xl p-6 sm:p-8 mb-6 border border-gray-800">
                   <div className="text-xs sm:text-sm text-gray-400 uppercase tracking-widest mb-2">{t('startingPrice')}</div>
-                  <div className="text-4xl sm:text-5xl font-bold text-orange-600 mb-2">{t(priceKey as any)}</div>
+                  <div className="text-4xl sm:text-5xl font-bold text-brand-primary mb-2">{t(priceKey as any)}</div>
                   <p className="text-gray-400 text-sm">{t('priceNote')}</p>
                 </div>
                 <div className="flex flex-col sm:flex-row gap-3">
                   <Link href={`/${locale}/kontakt`}
-                    className="flex-1 bg-orange-600 text-white py-4 px-6 rounded-xl font-semibold text-center hover:bg-orange-700 transition-colors">
+                    className="flex-1 bg-brand-primary text-white py-4 px-6 rounded-xl font-semibold text-center hover:bg-brand-hover transition-colors">
                     {t('quickQuote')}
                   </Link>
                   <Link href={`/${locale}/kontakt`}
@@ -108,7 +108,7 @@ export function ServicePage({ titleKey, subtitleKey, priceKey, image, related }:
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
                     <div className="absolute bottom-0 left-0 right-0 p-4">
                       <h3 className="text-white font-bold text-base sm:text-lg mb-1">{t(s.titleKey as any)}</h3>
-                      <span className="text-orange-400 text-sm font-medium">{t('learnMore')} →</span>
+                      <span className="text-brand-primary text-sm font-medium">{t('learnMore')} →</span>
                     </div>
                   </Link>
                 ))}
@@ -118,12 +118,12 @@ export function ServicePage({ titleKey, subtitleKey, priceKey, image, related }:
         )}
 
         {/* CTA */}
-        <section className="py-12 sm:py-20 bg-orange-600">
+        <section className="py-12 sm:py-20 bg-brand-primary">
           <div className="container mx-auto px-4 sm:px-8 text-center">
             <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">{tc('title')}</h2>
-            <p className="text-base sm:text-xl text-orange-100 mb-8 max-w-2xl mx-auto">{tc('subtitle')}</p>
+            <p className="text-base sm:text-xl text-brand-light mb-8 max-w-2xl mx-auto">{tc('subtitle')}</p>
             <Link href={`/${locale}/kontakt`}
-              className="inline-block bg-white text-orange-600 px-8 py-4 rounded-xl font-bold hover:bg-gray-50 transition-colors text-base sm:text-lg">
+              className="inline-block bg-white text-brand-primary px-8 py-4 rounded-xl font-bold hover:bg-gray-50 transition-colors text-base sm:text-lg">
               {tc('button')}
             </Link>
           </div>

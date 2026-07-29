@@ -1,4 +1,4 @@
-import { Header } from '@/components/header';
+﻿import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
@@ -16,20 +16,20 @@ export default function AboutPage() {
           <div className="container mx-auto px-4 sm:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
               <div>
-                <div className="text-sm text-orange-600 font-semibold mb-4 uppercase tracking-wider">{t('about.badge')}</div>
+                <div className="text-sm text-brand-primary font-semibold mb-4 uppercase tracking-wider">{t('about.badge')}</div>
                 <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 leading-tight text-gray-900">{t('about.title')}</h1>
                 <p className="text-base sm:text-lg text-gray-600 leading-relaxed mb-8">{t('about.description')}</p>
                 <div className="space-y-3 mb-8">
                   {(['about.features.team','about.features.coverage','about.features.pricing'] as const).map((key) => (
                     <div key={key} className="flex items-center gap-3">
-                      <svg className="w-6 h-6 text-orange-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <svg className="w-6 h-6 text-brand-primary flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/>
                       </svg>
                       <span className="text-gray-700">{t(key)}</span>
                     </div>
                   ))}
                 </div>
-                <Link href="#team" className="inline-flex items-center text-orange-600 font-semibold hover:text-orange-700 transition-colors group">
+                <Link href="#team" className="inline-flex items-center text-brand-primary font-semibold hover:text-brand-hover transition-colors group">
                   {t('about.cta')}
                   <svg className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3"/>
@@ -59,7 +59,7 @@ export default function AboutPage() {
                 { svg: <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd"/>, title: t('why.features.punctuality.title'), desc: t('why.features.punctuality.description') },
               ].map((item, i) => (
                 <div key={i} className="bg-white rounded-lg p-6 sm:p-8 shadow-sm hover:shadow-md transition-shadow">
-                  <div className="w-12 h-12 rounded-full bg-orange-600 flex items-center justify-center text-white mb-5">
+                  <div className="w-12 h-12 rounded-full bg-brand-primary flex items-center justify-center text-white mb-5">
                     <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">{item.svg}</svg>
                   </div>
                   <h3 className="text-lg sm:text-xl font-bold mb-3 text-gray-900">{item.title}</h3>
@@ -85,7 +85,7 @@ export default function AboutPage() {
                 { initials: 'SN', name: t('team.members.planning.name'), role: t('team.members.planning.role') },
               ].map((m, i) => (
                 <div key={i} className="text-center">
-                  <div className="w-16 h-16 sm:w-24 sm:h-24 mx-auto mb-4 bg-orange-600 rounded-full flex items-center justify-center text-white text-lg sm:text-2xl font-bold">{m.initials}</div>
+                  <div className="w-16 h-16 sm:w-24 sm:h-24 mx-auto mb-4 bg-brand-primary rounded-full flex items-center justify-center text-white text-lg sm:text-2xl font-bold">{m.initials}</div>
                   <h3 className="text-sm sm:text-xl font-bold mb-1 text-gray-900">{m.name}</h3>
                   <p className="text-gray-600 text-xs sm:text-base">{m.role}</p>
                 </div>
@@ -95,12 +95,12 @@ export default function AboutPage() {
         </section>
 
         {/* CTA Section */}
-        <section className="py-12 sm:py-20 bg-orange-600">
+        <section className="py-12 sm:py-20 bg-brand-primary">
           <div className="container mx-auto px-4 sm:px-8 text-center">
             <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-white">{t('cta.title')}</h2>
-            <p className="text-base sm:text-xl text-orange-100 mb-8 max-w-2xl mx-auto">{t('cta.subtitle')}</p>
+            <p className="text-base sm:text-xl text-brand-light mb-8 max-w-2xl mx-auto">{t('cta.subtitle')}</p>
             <Link href="/kontakt"
-              className="inline-flex items-center px-6 sm:px-8 py-3 sm:py-4 bg-white text-orange-600 font-semibold rounded-lg hover:bg-gray-50 transition-colors">
+              className="inline-flex items-center px-6 sm:px-8 py-3 sm:py-4 bg-white text-brand-primary font-semibold rounded-lg hover:bg-gray-50 transition-colors">
               {t('cta.button')}
             </Link>
           </div>

@@ -5,7 +5,7 @@ export default createMiddleware({
   // A list of all locales that are supported
   locales,
 
-  // Used when no locale matches
+  // Used when no locale matches — redirects /dashboard → /de/dashboard etc.
   defaultLocale: 'de',
 
   // Always use locale prefix
@@ -13,6 +13,12 @@ export default createMiddleware({
 });
 
 export const config = {
-  // Match only internationalized pathnames
-  matcher: ['/', '/(de|ar)/:path*']
+  // Match root, locale-prefixed paths, AND bare paths like /dashboard
+  // that should be redirected to the default locale.
+  matcher: [
+    '/',
+    '/(de|ar)/:path*',
+    // Catch paths without a locale prefix (excluding _next, api, static files)
+    '/((?!_next|api|.*\\..*).*)',
+  ],
 };

@@ -26,7 +26,7 @@ export function FAQSection() {
                 className="w-full px-5 sm:px-8 py-4 sm:py-6 text-left flex justify-between items-center hover:bg-gray-800/50 transition-colors"
               >
                 <span className="font-bold text-base sm:text-lg pr-4 text-white">{t(faq.questionKey)}</span>
-                <svg className={`w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0 transition-transform text-orange-600 ${openIndex === index ? 'rotate-180' : ''}`}
+                <svg className={`w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0 transition-transform text-brand-primary ${openIndex === index ? 'rotate-180' : ''}`}
                   fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>

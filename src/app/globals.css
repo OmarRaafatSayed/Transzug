@@ -4,7 +4,25 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* ── Brand color tokens (CSS vars for runtime use) ──────────── */
+:root {
+  --brand-primary:   #E19B4C;
+  --brand-hover:     #C7853D;
+  --brand-light:     rgba(225, 155, 76, 0.15);
+  --surface-default: #0a0a0b;
+  --surface-card:    #141416;
+  --surface-border:  #27272a;
+}
+
 @theme inline {
+  /* Brand / Golden-Amber — literal values required for Tailwind v4 @theme inline */
+  --color-brand-primary: #E19B4C;
+  --color-brand-hover:   #C7853D;
+  --color-brand-light:   rgba(225, 155, 76, 0.15);
+  /* Surface */
+  --color-surface:        #0a0a0b;
+  --color-surface-card:   #141416;
+  --color-surface-border: #27272a;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: "Geist", "Geist Fallback", ui-sans-serif, system-ui, sans-serif;

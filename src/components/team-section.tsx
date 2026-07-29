@@ -21,7 +21,7 @@ export function TeamSection() {
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
         {teamMembers.map((member, index) => (
           <div key={index} className="text-center">
-            <div className="w-16 h-16 sm:w-24 sm:h-24 mx-auto mb-3 sm:mb-4 bg-orange-600 rounded-full flex items-center justify-center text-white text-lg sm:text-2xl font-bold">
+            <div className="w-16 h-16 sm:w-24 sm:h-24 mx-auto mb-3 sm:mb-4 bg-brand-primary rounded-full flex items-center justify-center text-white text-lg sm:text-2xl font-bold">
               {member.initials}
             </div>
             <h3 className="text-sm sm:text-lg font-bold mb-1 text-white">{t(member.nameKey)}</h3>
